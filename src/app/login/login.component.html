@@ -1,0 +1,51 @@
+<div class="login-page">
+    <h4 style="text-align: center;">Login here!!</h4>
+    <form [formGroup]="loginForm" class="form-signin card mt-3 p-5" style="max-width:500px;">
+        <div class="pb-3" id="recaptcha-container" class="invisible"></div>
+        <h5 class="form-signin-heading pb-3 text-dark">Sign in to your account</h5>
+        <div class="form-group  pb-3">
+            <label for="email">Email <div class="badge badge-sm rounded-pill mb-1 bg-success">verified</div></label>
+            <input type="email" class="form-control" id="email" formControlName="email" placeholder="Enter email"
+                required>
+            <div class="invalid-feedback">
+                Enter valid email
+            </div>
+        </div>
+        <div class="form-group pb-3">
+            <label for="passwd">Password</label>
+            <label for="passwd" class="float-end mb-1 font-weight-bold pointer"><a
+                    [routerLink]="['/forgot-password']">Forgot your
+                    password?</a></label>
+            <input type="password" class="form-control" id="passwd" formControlName="password" placeholder="Password"
+                required>
+            <div class="invalid-feedback">
+                Password should contain minimum 6 characters
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary btn-lg btn-block" data-bs-toggle="modal"
+            data-bs-target="#loginModal" [disabled]="loginForm.invalid">
+            <!-- <span *ngIf="action.loginLoading" class="spinner-border spinner-border-sm text-white align-baseline"
+            role="status" aria-hidden="true"></span> -->
+            Login
+        </button>
+    </form>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="loginModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="loginModal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="loginModal">Login</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to login?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" data-bs-dismiss="modal" (click)="mainPage()" class="btn btn-primary">yes</button>
+            </div>
+        </div>
+    </div>
+</div>
